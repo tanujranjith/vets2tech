@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Sam - Veteran IT Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+        header {
+            background: linear-gradient(135deg, #3d75b1 0%, #042a52 100%);
+            color: #ffffff;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 16px 16px;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .nav-btn {
+            background-color: #007BFF;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1001;
+        }
+        .user-info {
+            font-size: 1rem;
+            margin-left: auto;
+        }
+        .user-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .user-info a:hover {
+            text-decoration: underline;
+        }
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            z-index: 1000;
+            border-radius: 0 16px 16px 0;
+            padding: 1rem;
+        }
+        .sidebar.show {
+            left: 0;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a, .sidebar ul li button {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: transparent;
+            border: 1px solid transparent;
+        }
+        .sidebar ul li a:hover, .sidebar ul li button:hover {
+            background-color: rgba(0, 123, 255, 0.2);
+            color: #0056b3;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+        .sidebar-hover-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            z-index: 1001;
+        }
+        .content {
+            margin-left: 0;
+            padding: 2rem;
+            flex: 1;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 0 16px 16px 0;
+        }
+        .content.sidebar-open {
+            margin-left: 300px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 47, 255, 0.8);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        textarea {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 16px;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .btn {
+            background-color: #007bff; /* Blue color for primary buttons */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+            width: 100%; /* Makes button stretch the width of its container */
+            box-sizing: border-box; /* Includes padding in the element's total width and height */
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d; /* Gray color for secondary button */
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray for hover effect */
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #ffffff;
+            z-index: 0;
+            transform: translateX(-100%);
+            animation: moveBar 1s linear infinite;
+            display: none;
+        }
+        @keyframes moveBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>&nbsp;
+            &nbsp;
+            Chat with Sam</h1>
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                Welcome, {{ user.username }}!&nbsp;
+                &nbsp;
+
+            {% else %}
+                <a href="{% url 'login' %}">Sign in</a>
+            {% endif %}
+        </div>
+        <button class="nav-btn" id="navBtn">&#9776;</button>
+    </header>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education/">Education</a></li>
+            <li><a href="/employment/">Employment</a></li>
+            <li><a href="/donate/">Donate</a></li>
+            <li><a href="/chat/">Chat with Sam</a></li>
+            <li><a href="/profile/">Profile</a></li>
+            <li><a href="/about/">About</a></li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background: none; border: none; color: #007BFF; cursor: pointer; padding: 10px;">Logout</button>
+                        </form>
+                    </a>    
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="sidebar-hover-zone" id="sidebarHoverZone"></div>
+    <div class="content" id="content">
+        <div class="loading-bar" id="loading-bar"></div>
+        <div class="card">
+            <h2>Edit Profile</h2>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+            
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+            <br>
+            
+            <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+    <script>
+        function showLoading() {
+            document.getElementById('loading-bar').style.display = 'block';
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const sidebarHoverZone = document.getElementById('sidebarHoverZone');
+        const navBtn = document.getElementById('navBtn');
+
+        let isSidebarOpen = false;
+
+        navBtn.addEventListener('click', () => {
+            isSidebarOpen = !isSidebarOpen;
+            toggleSidebar();
+        });
+
+        sidebarHoverZone.addEventListener('mouseover', () => {
+            if (!isSidebarOpen) {
+                isSidebarOpen = true;
+                toggleSidebar();
+            }
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            if (isSidebarOpen && event.clientX > 300) {
+                isSidebarOpen = false;
+                toggleSidebar();
+            }
+        });
+
+        function toggleSidebar() {
+            if (isSidebarOpen) {
+                sidebar.classList.add('show');
+                content.classList.add('sidebar-open');
+            } else {
+                sidebar.classList.remove('show');
+                content.classList.remove('sidebar-open');
+            }
+        }
+    </script>
+</body>
+</html>
