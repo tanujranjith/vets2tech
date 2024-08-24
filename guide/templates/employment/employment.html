@@ -1,0 +1,61 @@
+{% include "header.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/tilesSection.css' %}">
+
+<body>
+    <div class="content" id="content">
+        <div class="pageHeaderSection">
+            <div style="width: 100%; text-align: center;">
+                <h2>Get A Job!</h2>
+            </div>
+            <hr>
+
+            <table>
+                <tr>
+                    <th>
+                        <div style="font-size: 16px; text-align: left;">
+                            <ul>
+                                <li>Start by creating a resume using the info on the resume page</li>
+                                <li>After that, make a LinkedIn profile with your achievements and prior work experience</li>
+                                <li>Finally, apply to jobs on LinkedIn</li>
+                            </ul>
+                        </div>
+                    </th>
+                    <th class="noDisplayInMobile">
+                        <img src="{% static 'imgs/vetapplyjob.jpg' %}" alt="Apply for job" style="border-radius: 50px; width: 100%; max-width: 600px; height: auto; scale: 50%;">
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content" id="content">
+            <div style="width: 100%; text-align: center;">
+                <h1>Get Hired!</h1>
+            </div>
+            <hr>
+
+            <div class="button-grid">
+                <a href="{% url 'resume' %}" class="grid-button">
+                    <img src="https://res.cloudinary.com/cybercoders/image/upload/c_scale,g_south_east,l_cc_logo_bug_wenazs.png,w_40/v1613067254/Tailor_Resume_to_Job_Description_Blog_Photo_pq7rge.jpg" alt="Create a resume" style="border-radius: 10px; width: 100%; max-width: 500px; height: auto;">
+                    <h3>Create a Resume</h3>
+                    <hr>
+                    <h5>Learn how to make a resume</h5>
+                </a>
+                <a href="{% url 'linkedin' %}" class="grid-button">
+                    <img src="https://download.logo.wine/logo/LinkedIn/LinkedIn-Logo.wine.png" alt="LinkedIn page" style="border-radius: 10px; width: 100%; max-width: 500px; height: auto;">
+                    <h3>How to Make a LinkedIn Page</h3>
+                    <hr>
+                    <h5>Learn how to create a LinkedIn profile</h5>
+                </a>
+                <a href="{% url 'jobfind' %}" class="grid-button">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2936/2936630.png" alt="Find a job" style="border-radius: 10px; width: 100%; max-width: 300px; height: auto;">
+                    <h3>Find a Job</h3>
+                    <hr>
+                    <h5>Discover websites to find job opportunities</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% include "footer.html" %}

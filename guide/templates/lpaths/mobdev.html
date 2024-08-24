@@ -1,0 +1,89 @@
+{% include "header.html" %}
+{% load static %}
+
+<body>
+    <header>
+        <h1>Veteran IT Guide</h1>
+        <button class="nav-btn" id="navBtn">&#9776;</button> <!-- Hamburger icon -->
+    </header>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education/">Education</a></li>
+            <li><a href="/employment/">Employment</a></li>
+            <li><a href="/donate/">Donate</a></li>
+            <li><a href="/chat/">Chat with Sam</a></li>
+            <li><a href="/profile/">Profile</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+            {% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; color: #007BFF; cursor: pointer; padding: 10px;">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="sidebar-hover-zone" id="sidebarHoverZone"></div>
+    <div class="content" id="content">
+
+        <div class="section">
+            <section>
+                <h2>Mobile application developer</h2>
+                <p>Mobile developers create and maintain apps for smartphones and tablets. They write and optimize code, test functionality, and ensure apps work smoothly across different devices and operating systems. They also collaborate with designers and backend teams to deliver a seamless user experience.</p>
+            </section>
+        </div>
+        <div class="section">
+            <section>
+                <h2>Most Used Programming Languages</h2>
+                <ul>
+                    <li><strong>Swift:</strong> Primary language for iOS and macOS development.</li>
+                    <li><strong>Kotlin:</strong> Preferred language for Android development.</li>
+                    <li><strong>Java:</strong> Widely used for Android app development.</li>
+                    <li><strong>Objective-C:</strong> Legacy language for iOS development.</li>
+                    <li><strong>Dart:</strong> Used with the Flutter framework for cross-platform development.</li>
+                    <li><strong>JavaScript:</strong> Used with frameworks like React Native for cross-platform apps.</li>
+                    <li><strong>C#:</strong> Used with Xamarin for cross-platform mobile development.</li>
+                    <li><strong>HTML/CSS:</strong> Used for mobile web apps and hybrid apps.</li>
+                    <li><strong>Python:</strong> Occasionally used for backend services in mobile apps.</li>
+                    <li><strong>C++:</strong> Used in game development and for performance-critical mobile apps.</li>
+                </ul>
+            </section>
+            
+            
+
+        </div>
+        <div class="section">
+            <section>
+                <h2>Cybersecurity Courses and Certifications</h2>
+                <ul class="course-list">
+                    <li>
+                        <h3>Introduction to Cybersecurity</h3>
+                        <p>Learn the fundamentals of cybersecurity, including key concepts, threat types, and basic protection strategies.</p>
+                    </li>
+                    <li>
+                        <h3>Ethical Hacking and Penetration Testing</h3>
+                        <p>Understand the techniques used by ethical hackers to find and fix security vulnerabilities before malicious hackers can exploit them.</p>
+                    </li>
+                    <li>
+                        <h3>Network Security Fundamentals</h3>
+                        <p>Explore network security concepts, including firewall configurations, intrusion detection systems, and secure network protocols.</p>
+                    </li>
+                    <li>
+                        <h3>Certified Information Systems Security Professional (CISSP)</h3>
+                        <p>Advanced certification that demonstrates deep knowledge of information security concepts and practices.</p>
+                    </li>
+                    <li>
+                        <h3>Certified Ethical Hacker (CEH)</h3>
+                        <p>Gain skills in ethical hacking techniques and tools to evaluate and improve the security of systems.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+{% include "footer.html" %}

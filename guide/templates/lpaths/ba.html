@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Veteran IT Guide</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'guide/css/styles.css' %}">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F7FA; /* Light Gray */
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%); /* Gradient from Blue to Dark Blue */
+            color: #ffffff;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 16px 16px; /* Rounded bottom corners */
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Toggle Button Styles */
+        .nav-btn {
+            background-color: #007BFF;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            z-index: 1000;
+            border-radius: 0 16px 16px 0;
+            padding: 1rem;
+            border-left: 5px solid #931a1a; /* Red border */
+        }
+
+        /* Show Sidebar */
+        .sidebar.show {
+            left: 0;
+        }
+
+        /* Sidebar List Styles */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Sidebar List Item Styles */
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        /* Transparent Button Styles */
+        .sidebar ul li a {
+            color: #007BFF; /* Blue */
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: transparent; /* Transparent background */
+            border: 1px solid transparent; /* Transparent border */
+        }
+
+        /* Hover Effect for Buttons */
+        .sidebar ul li a:hover {
+            background-color: rgba(0, 123, 255, 0.2); /* Light Blue on hover */
+            color: #0056b3; /* Darker Blue */
+            border: 1px solid rgba(0, 123, 255, 0.3); /* Light Blue border on hover */
+        }
+
+        /* Sidebar Hover Effect */
+        .sidebar-hover-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px; /* Adjust to ensure proper activation area */
+            height: 100%;
+            z-index: 1000;
+        }
+
+        /* Main Content Styles */
+        .content {
+            margin-left: 0;
+            padding: 2rem;
+            flex: 1;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+            background-color: #ffffff; /* White background for content */
+            border-radius: 0 16px 16px 0; /* Rounded corners on the left */
+        }
+
+        /* Adjust Content Margin When Sidebar is Open */
+        .content.sidebar-open {
+            margin-left: 300px; /* Same as sidebar width */
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 1.5rem; /* Reduced spacing between cards */
+            border-radius: 12px; /* Rounded corners */
+            background-color: #ffffff; /* White background for sections */
+            padding: 2rem; /* Padding for content */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced floating effect */
+            border: 1px solid #ddd; /* Light border for more definition */
+            position: relative; /* Ensure proper positioning for floating effect */
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            padding-left: 1.5rem;
+        }
+
+        .section p a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section p a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #007BFF; /* Gradient from Blue to Dark Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 16px 16px 0 0; /* Rounded top corners */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Grid Styles */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 850px;
+        }
+        .grid-button {
+            display: block;
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            max-width: 160px;
+            padding: 0px 10px 0px 10px;
+        }
+
+        .grid-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Form Styles */
+        .course-form {
+            background-color: #f9f9f9; /* Light gray background for contrast */
+            padding: 1.5rem; /* Padding around form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            border: 1px solid #ddd; /* Light border */
+            margin-top: 1rem;
+        }
+
+        .course-form .form-group {
+            margin-bottom: 1.5rem; /* Spacing between form elements */
+        }
+
+        .course-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333; /* Darker text color */
+        }
+
+        .course-form input[type="text"] {
+            width: 100%; /* Full width input */
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .course-form input[type="text"]:focus {
+            border-color: #007BFF; /* Blue border on focus */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Blue glow on focus */
+        }
+
+        .course-form button {
+            background-color: #007BFF; /* Blue button */
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%; /* Full width button */
+        }
+
+        .course-form button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .response-text, .no-suggestions {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #e9ecef; /* Light background for the text */
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            color: #333; /* Darker text */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Veteran IT Guide</h1>
+        <button class="nav-btn" id="navBtn">&#9776;</button> <!-- Hamburger icon -->
+    </header>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education/">Education</a></li>
+            <li><a href="/employment/">Employment</a></li>
+            <li><a href="/donate/">Donate</a></li>
+            <li><a href="/chat/">Chat with Sam</a></li>
+            <li><a href="/profile/">Profile</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+            {% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; color: #007BFF; cursor: pointer; padding: 10px;">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="sidebar-hover-zone" id="sidebarHoverZone"></div>
+    <div class="content" id="content">
+
+        <div class="section">
+            <section>
+                <h2>Business Analyst</h2>
+                <p>Business Analysts are responsible for identifying business needs, analyzing processes, and recommending solutions to improve organizational performance. They work closely with stakeholders to gather requirements, document processes, and create detailed reports. Their role involves bridging the gap between business objectives and IT capabilities, ensuring that solutions align with business goals. Business Analysts also play a crucial role in project management, helping to ensure that projects are completed on time and within budget.</p>
+            </section>
+        </div>
+        <div class="section">
+            <section>
+                <h2>Most Used Programming Languages and Tools</h2>
+                <ul>
+                    <li><strong>Excel:</strong> A key tool for data analysis, financial modeling, and creating reports.</li>
+                    <li><strong>SQL:</strong> Used for querying databases and extracting data for analysis.</li>
+                    <li><strong>Tableau:</strong> A data visualization tool used for creating interactive dashboards and reports.</li>
+                    <li><strong>Power BI:</strong> A business analytics tool used for visualizing data and sharing insights across the organization.</li>
+                    <li><strong>Microsoft Visio:</strong> Used for creating process maps, flowcharts, and diagrams to visualize business processes.</li>
+                    <li><strong>JIRA:</strong> A project management tool used for tracking tasks, issues, and project progress.</li>
+                    <li><strong>Confluence:</strong> A collaboration tool used for documenting requirements, processes, and project details.</li>
+                    <li><strong>SAS:</strong> A software suite used for advanced analytics, data management, and business intelligence.</li>
+                    <li><strong>Python:</strong> Used for data analysis, automation, and building custom analytical tools.</li>
+                    <li><strong>R:</strong> A programming language used for statistical analysis and data visualization.</li>
+                </ul>
+            </section>
+        </div>
+        
+        
+            
+
+        </div>
+        <div class="section">
+            <section>
+                <h2>Cybersecurity Courses and Certifications</h2>
+                <ul class="course-list">
+                    <li>
+                        <h3>Introduction to Cybersecurity</h3>
+                        <p>Learn the fundamentals of cybersecurity, including key concepts, threat types, and basic protection strategies.</p>
+                    </li>
+                    <li>
+                        <h3>Ethical Hacking and Penetration Testing</h3>
+                        <p>Understand the techniques used by ethical hackers to find and fix security vulnerabilities before malicious hackers can exploit them.</p>
+                    </li>
+                    <li>
+                        <h3>Network Security Fundamentals</h3>
+                        <p>Explore network security concepts, including firewall configurations, intrusion detection systems, and secure network protocols.</p>
+                    </li>
+                    <li>
+                        <h3>Certified Information Systems Security Professional (CISSP)</h3>
+                        <p>Advanced certification that demonstrates deep knowledge of information security concepts and practices.</p>
+                    </li>
+                    <li>
+                        <h3>Certified Ethical Hacker (CEH)</h3>
+                        <p>Gain skills in ethical hacking techniques and tools to evaluate and improve the security of systems.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const sidebarHoverZone = document.getElementById('sidebarHoverZone');
+        const navBtn = document.getElementById('navBtn');
+
+        let isSidebarOpen = false;
+
+        navBtn.addEventListener('click', () => {
+            isSidebarOpen = !isSidebarOpen;
+            toggleSidebar();
+        });
+
+        sidebarHoverZone.addEventListener('mouseover', () => {
+            if (!isSidebarOpen) {
+                isSidebarOpen = true;
+                toggleSidebar();
+            }
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            const sidebarRect = sidebar.getBoundingClientRect();
+            const hoverZoneRect = sidebarHoverZone.getBoundingClientRect();
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            if (mouseX >= sidebarRect.left && mouseX <= sidebarRect.right &&
+                mouseY >= sidebarRect.top && mouseY <= sidebarRect.bottom) {
+                if (!isSidebarOpen) {
+                    isSidebarOpen = true;
+                    toggleSidebar();
+                }
+            } else if (isSidebarOpen) {
+                isSidebarOpen = false;
+                toggleSidebar();
+            }
+        });
+
+        function toggleSidebar() {
+            if (isSidebarOpen) {
+                sidebar.classList.add('show');
+                content.classList.add('sidebar-open');
+            } else {
+                sidebar.classList.remove('show');
+                content.classList.remove('sidebar-open');
+            }
+        }
+    </script>
+
+</body>
+</html>
