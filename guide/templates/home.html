@@ -1,0 +1,113 @@
+
+{% include "header.html" %}
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/tilesSection.css' %}">
+
+<div class="container" id="content" style="padding-left: 40px !important; max-width: 85%; margin-left: auto; margin-right: auto;">
+    <!--
+    <section class="section">
+        <h4>
+            As of August 2024, there are approximately 500,000 open IT job positions in the U.S., according to recent data from job boards such as LinkedIn, Indeed, and Glassdoor. This statistic highlights the huge demand for IT professionals across various sectors and regions. For the most up-to-date information, it's a good idea to consult these job boards or industry reports directly.
+        </h4>
+        <h4>
+            While this demand is promising, there's a challenge: many people are either unwilling to acquire the necessary skills for IT roles or lack the commitment required for this demanding field. However, veterans are known for their strong work ethic and dedication, making them exceptionally well-suited for IT jobs. Their perseverance and readiness to tackle hard work align perfectly with the needs of the IT industry.
+        </h4>
+
+    </section>
+    <section class="section">
+        <h2>Explore Our Resources</h2>
+        <ul>
+            <li><strong>Educational Content:</strong> Dive into our comprehensive tutorials and courses that cover the latest trends and technologies.</li>
+            <li><strong>Career Guidance:</strong> Get expert advice on how to navigate your career path, from entry-level positions to advanced roles.</li>
+        </ul>
+    </section>
+    <section class="section">
+        <h2>Get Started Now!</h2>
+        <p>Ready to take your IT career to the next level? Start exploring our resources or reach out for personalized guidance. We're here to help you every step of the way.</p>
+    </section>
+    <div style="padding:10px;">
+        <p><a href=""{% url 'education' %}" class="linkButton">Explore More</a>&nbsp;<a href="/contact/" class="linkButton">Contact Us</a></p>
+    </div>
+    -->
+
+    
+    <section id="mission" class="section">
+        <h2>Our Mission</h2>
+        <p>At Veteran IT Guide, we're committed to empowering veterans like you to enter the dynamic world of Information Technology. Whether you're starting fresh or building on existing skills, we're here to provide the tools, training, and guidance you need to succeed.</p>
+        <p>We believe that your military service has prepared you for greatness in the civilian workforce. With our tailored resources, we help you leverage your strengths and transition seamlessly into an IT career that is both fulfilling and future-proof.</p>
+    </section>
+    
+    <section id="services" class="section">
+        <h2>Our Core Services</h2>
+        <div class="button-grid homePageServices" style="max-width: 100% !important;">
+            <div class="grid-button">
+                <div>
+                    <img src="{% static 'imgs/IT Education and Training3.jpeg' %}" title="IT Education and Training" style="max-width: 320px;float:right !important;border-radius:10px;">
+                    <h3>1. IT Education and Training</h3>
+                    <p>Jumpstart your IT career with our comprehensive courses, designed to meet the needs of veterans at all skill levels. Whether you're interested in programming, network security, or cloud computing, we have the right course for you.</p>
+                    <ul>
+                        <li><strong>Beginner to Advanced Courses:</strong> Learn at your own pace, with courses covering essential IT skills and cutting-edge technologies.</li>
+                        <li><strong>Veteran-Friendly Learning:</strong> Our courses are structured to align with the discipline and problem-solving skills you honed in the military.</li>
+                    </ul>
+                </div>   
+                <a href="{% url 'education' %}" class="linkButton">Explore More</a>
+            </div>
+
+            <div class="grid-button">
+                <div>
+                    <img src="{% static 'imgs/Certification Support1.jpeg' %}" title="IT Education and Training" style="max-width: 320px; float:right !important;border-radius: 10px;">
+                    <h3>2. Certification Support</h3>
+                    <p>Boost your employability with industry-recognized certifications. We guide you through the certification process, from choosing the right path to preparing for the exams.</p>
+                    <ul>
+                        <li><strong>Certification Roadmap:</strong> Identify the certifications that will open doors in your desired IT field.</li>
+                        <li><strong>Exam Preparation Resources:</strong> Access study guides, practice tests, and expert tips to help you pass with confidence.</li>
+                    </ul>
+                    
+                </div>  
+                <a href="{% url 'education' %}" class="linkButton">Explore More</a>
+            </div>
+
+            <div class="grid-button">
+                <div>
+                    <img src="{% static 'imgs/Resume Building Tools1.jpeg' %}" title="IT Education and Training" style="max-width: 320px; float:right !important;border-radius: 10px;">
+                    <h3>3. Resume Building Tools</h3>
+                    <p>Your resume is your first impression in the job market. Our online tools and resources help you craft a professional resume that showcases your military experience and IT skills.</p>
+                    <ul>
+                        <li><strong>Custom Resume Templates:</strong> Choose from templates designed specifically for transitioning veterans.</li>
+                        <li><strong>Expert Guidance:</strong> Learn how to highlight your strengths and tailor your resume for the IT industry.</li>
+                    </ul>
+                </div>
+                <a href="{% url 'resume' %}" class="linkButton">Explore More</a>
+            </div>  
+        
+            <div class="grid-button">
+                <div>
+                    <img src="{% static 'imgs/Job Application Guidance1.jpeg' %}" title="IT Education and Training" style="max-width: 320px; float:right !important;border-radius: 10px;">
+                    <h3>4. Job Application Guidance</h3>
+                    <p>Navigating the job market can be challenging, but with our support, you're never alone. We offer personalized advice and resources to help you successfully apply for IT jobs.</p>
+                    <ul>
+                        <li><strong>Job Search Strategies:</strong> Learn how to identify and apply for roles that match your skills and interests.</li>
+                        <li><strong>Application Assistance:</strong> Get help with writing cover letters, optimizing your LinkedIn profile, and preparing for interviews.</li>
+                    </ul>
+                </div>
+                <a href="{% url 'jobfind' %}" class="linkButton">Explore More</a>
+            </div>
+        </div>
+
+    </section>
+    
+        
+    <section id="start" class="section">
+        <h2>Start Your Journey Today</h2>
+        <p>Your new career in IT is within reach. Explore our courses, prepare for certifications, and take advantage of our resume-building and job application resources. We're here to support you every step of the way.</p>
+        <a href="{% url 'signup' %}" class="btn">Ready to Get Started?</a>
+        
+        <h2>Contact Us</h2>
+        <p>Have questions or need more information? We're here to help. Reach out to us anytime, and let's get started on your IT career journey together.</p>
+    </section>
+        
+    <br>
+    <br>
+    <br>
+</div>
+{% include "footer.html" %}

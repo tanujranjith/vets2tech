@@ -1,0 +1,133 @@
+{% include "header.html" %}
+{% load static %}
+
+<div class="container" id="content" style="width: 80%;">
+    <div class="resumeContent">
+        <section class="section">
+            <img class="noDisplayInMobile" src="{% static 'imgs/FindAJob.jpeg' %}" alt="Apply for job" style="max-width: 250px; float: right; border-radius: 10px;">      
+            <h2>Find A Job</h2>
+            
+            <h3>Just Enter Your Skills And Apply To The Jobs That Catch Your Eye</h3>
+            
+            <p>At Veteran IT Guide, we are dedicated to helping veterans transition into fulfilling careers in the tech industry. Our "Find a Tech Job" page is designed to be your go-to resource for discovering opportunities, preparing for the job market, and landing a role that suits your skills and aspirations.</p>
+            <br>
+            <p><b>Job Search Resources</b></p>
+            <p>We provide access to a curated list of job boards, recruitment agencies, and company career pages that actively seek veteran talent. Our platform simplifies the job search process by bringing together opportunities from across the tech industry, including roles in software development, cybersecurity, data analysis, IT support, and more.</p>
+            <br>
+        </section>
+
+        <div class="section-card-left">
+            <section class="section">
+                <div class="tiles-container">
+                    <style>
+                        .tiles-container {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 20px;
+                            margin-top: 20px;
+                        }
+                
+                        .tile {
+                            background-color: #f0f0f0;
+                            border: 1px solid #ddd;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                            width: 100px; /* Adjust width as needed */
+                            height: 100px; /* Adjust height as needed */
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: center;
+                            padding: 10px;
+                            position: relative;
+                        }
+                
+                        .tile a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 100%;
+                            height: 100%;
+                            text-decoration: none;
+                            color: inherit; /* Make sure text color is inherited */
+                        }
+                
+                        .tile img {
+                            max-width: 80%;
+                            max-height: 80%;
+                            border-radius: 8px;
+                            transition: opacity 0.3s ease;
+                        }
+                        
+                        .tile:hover {
+                            background-color: #a19595;
+                        }
+                        
+                        .tile img:hover {
+                            opacity: 0.8;
+                        }
+                    </style>
+                    <div class="tile"><a href="https://www.indeed.com/" target="_blank"><img src="{% static 'imgs/findjobicon/indeed_logo.jpg' %}" alt="Indeed"></a></div>
+                    <div class="tile"><a href="https://www.dice.com/" target="_blank"><img src="{% static 'imgs/findjobicon/dice logo.jpg' %}" alt="Dice"></a></div>
+                    <div class="tile"><a href="https://www.linkedin.com/jobs/" target="_blank"><img src="{% static 'imgs/findjobicon/linkedin logo.png' %}" alt="LinkedIn"></a></div>
+                    <div class="tile"><a href="https://www.gdit.com/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/gdit logo.jpg' %}" alt="GDIT"></a></div>
+                    <div class="tile"><a href="https://www.caci.com/" target="_blank"><img src="{% static 'imgs/findjobicon/caci logo.svg' %}" alt="Caci"></a></div>
+                    <div class="tile"><a href="https://www.lockheedmartin.com/en-us/careers/index.html" target="_blank"><img src="{% static 'imgs/findjobicon/lockheed logo.png' %}" alt="Lockheed"></a></div>
+                    <div class="tile"><a href="https://www.accenture.com/us-en/careers/jobsearch" target="_blank"><img src="{% static 'imgs/findjobicon/accenture fed.png' %}" alt="Accenture Fed"></a></div>
+                    <div class="tile"><a href="https://www.ey.com/en_us/careers" target="_blank"><img src="{% static 'imgs/findjobicon/EY logo.png' %}" alt="EY"></a></div>
+                    <div class="tile"><a href="https://www2.deloitte.com/us/en/careers/careers.html?icid=top_careers" target="_blank"><img src="{% static 'imgs/findjobicon/deloite logo.png' %}" alt="Deloitte"></a></div>
+                    <div class="tile"><a href="https://www.clearancejobs.com/" target="_blank"><img src="{% static 'imgs/findjobicon/clearence job.webp' %}" alt="ClearanceJobs"></a></div>
+                    <div class="tile"><a href="https://www.icf.com/" target="_blank"><img src="{% static 'imgs/findjobicon/icf logo.jpg' %}" alt="ICF"></a></div>
+                    <div class="tile"><a href="https://www.google.com/about/careers/applications/jobs/results#!t=jo&jid=127025001&" target="_blank"><img src="{% static 'imgs/findjobicon/google logo.png' %}" alt="Google"></a></div>
+                    <div class="tile"><a href="https://www.metacareers.com/" target="_blank"><img src="{% static 'imgs/findjobicon/meta logo.png' %}" alt="Meta"></a></div>
+                    <div class="tile"><a href="https://www.amazon.jobs/en/" target="_blank"><img src="{% static 'imgs/findjobicon/amazon logo.png' %}" alt="Amazon"></a></div>
+                    <div class="tile"><a href="https://careers.microsoft.com/v2/global/en/home.html" target="_blank"><img src="{% static 'imgs/findjobicon/microsoft icon.jpg' %}" alt="Microsoft"></a></div>
+                    <div class="tile"><a href="https://www.adobe.com/careers.html" target="_blank"><img src="{% static 'imgs/findjobicon/adobe icon.png' %}" alt="Adobe"></a></div>
+                    <div class="tile"><a href="https://jobs.adp.com/en/" target="_blank"><img src="{% static 'imgs/findjobicon/adp icon.jpeg' %}" alt="ADP"></a></div>
+                    <div class="tile"><a href="https://www.altimetrik.com/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/altimetrik icon.jpeg' %}" alt="ALTIMETRIK"></a></div>
+                    <div class="tile"><a href="https://www.aresmgmt.com/about-ares-management-corporation/careers-at-ares" target="_blank"><img src="{% static 'imgs/findjobicon/ares icon.jpg' %}" alt="Ares"></a></div>
+                    <div class="tile"><a href="https://www.att.jobs/" target="_blank"><img src="{% static 'imgs/findjobicon/att logo.png' %}" alt="AT&T"></a></div>
+                    <div class="tile"><a href="https://www.bmc.com/careers/careers.html" target="_blank"><img src="{% static 'imgs/findjobicon/bmc icon.jpg' %}" alt="BMC"></a></div>
+                    <div class="tile"><a href="https://jobs.boeing.com/" target="_blank"><img src="{% static 'imgs/findjobicon/boeing logo.png' %}" alt="Boeing"></a></div>
+                    <div class="tile"><a href="https://www.cisco.com/c/en/us/about/careers.html" target="_blank"><img src="{% static 'imgs/findjobicon/cisco logo.jpg' %}" alt="Cisco"></a></div>
+                    <div class="tile"><a href="https://jobs.comcast.com/" target="_blank"><img src="{% static 'imgs/findjobicon/comcast logo.jpg' %}" alt="Comcast"></a></div>
+                    <div class="tile"><a href="https://www.couchbase.com/products/capella/start-today/?utm_medium=search&utm_source=google&utm_campaign=GGL-AMER-Cloud-Brand&utm_content=couchbase&_bt=696982722646&_bm=p&_bn=g&gad_source=1&gclid=Cj0KCQjwrKu2BhDkARIsAD7GBovkPNyU6ioAVcGsMueqlZj-XM2_J1qrPFBQzmCDUYzPStYu3tK6yBoC5uIQAvD_BwE" target="_blank"><img src="{% static 'imgs/findjobicon/couchbase logo.jpg' %}" alt="Couchbase"></a></div>
+                    <div class="tile"><a href="https://www.disneycareers.com/en" target="_blank"><img src="{% static 'imgs/findjobicon/disney logo.jpg' %}" alt="Disney"></a></div>
+                    <div class="tile"><a href="https://careers.gene.com/us/en/" target="_blank"><img src="{% static 'imgs/findjobicon/genetech logo.png' %}" alt="Genentech"></a></div>
+                    <div class="tile"><a href="https://www.ibm.com/careers" target="_blank"><img src="{% static 'imgs/findjobicon/ibm logo.svg' %}" alt="IBM"></a></div>
+                    <div class="tile"><a href="https://www.intuit.com/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/intuit logo.jpg' %}" alt="Intuit"></a></div>
+                    <div class="tile"><a href="https://careers.leidos.com/" target="_blank"><img src="{% static 'imgs/findjobicon/leidos logo.png' %}" alt="Leidos"></a></div>
+                    <div class="tile"><a href="https://www.lytx.com/about-us/careers" target="_blank"><img src="{% static 'imgs/findjobicon/lytx logo.jpg' %}" alt="Lytx"></a></div>
+                    <div class="tile"><a href="https://careers.mastercard.com/us/en/" target="_blank"><img src="{% static 'imgs/findjobicon/mastercard logo.png' %}" alt="Mastercard"></a></div>
+                    <div class="tile"><a href="https://www.nasdaq.com/about/careers" target="_blank"><img src="{% static 'imgs/findjobicon/nasdaq logo.jpg' %}" alt="Nasdaq"></a></div>
+                    <div class="tile"><a href="https://careers.netapp.com/" target="_blank"><img src="{% static 'imgs/findjobicon/netapp logo.png' %}" alt="NetApp"></a></div>
+                    <div class="tile"><a href="https://www.oracle.com/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/oracle logo.jpg' %}" alt="Oracle"></a></div>
+                    <div class="tile"><a href="https://jobs.paloaltonetworks.com/en/" target="_blank"><img src="{% static 'imgs/findjobicon/paloalto img.webp' %}" alt="Palo Alto Networks"></a></div>
+                    <div class="tile"><a href="https://careers.pnc.com/global/en" target="_blank"><img src="{% static 'imgs/findjobicon/pnc logo.png' %}" alt="PNC"></a></div>
+                    <div class="tile"><a href="https://www.redditinc.com/careers" target="_blank"><img src="{% static 'imgs/findjobicon/reddit logo.png' %}" alt="Reddit"></a></div>
+                    <div class="tile"><a href="https://www.riotgames.com/en/work-with-us" target="_blank"><img src="{% static 'imgs/findjobicon/riot games logo.png' %}" alt="Riot Games"></a></div>
+                    <div class="tile"><a href="https://careers.salesforce.com/en/jobs/" target="_blank"><img src="{% static 'imgs/findjobicon/salesforce.webp' %}" alt="Salesforce"></a></div>
+                    <div class="tile"><a href="https://www.samsung.com/us/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/samsung logo.avif' %}" alt="Samsung"></a></div>
+                    <div class="tile"><a href="https://www.uber.com/us/en/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/uber logo.webp' %}" alt="Uber"></a></div>
+                    <div class="tile"><a href="https://jobs.walgreens.com/en" target="_blank"><img src="{% static 'imgs/findjobicon/walgreens logo.png' %}" alt="Walgreens"></a></div>
+                    <div class="tile"><a href="https://xperi.com/careers/" target="_blank"><img src="{% static 'imgs/findjobicon/xperi logo.jpg' %}" alt="Xperi"></a></div>
+                </div>
+                
+            </section>
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <div class="section-card-right">
+            <section class="section">
+                <div style="margin-bottom: 20px;">
+                    <iframe class="youtubeVideo" width="360" height="215" src="https://www.youtube.com/embed/Xg9ihH15Uto?si=QBLok98pnmy0QU4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div>
+                <div>
+                    <iframe class="youtubeVideo" width="360" height="215" src="https://www.youtube.com/embed/fOnUAAUXC1E?si=rIXrHg-HTug3V5VQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %}

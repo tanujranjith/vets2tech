@@ -1,0 +1,16 @@
+{% include "header.html" %}
+<div class="container" id="content" style="text-align: center;">
+    <section style="text-align: center;">
+        
+        <div class="loading-bar" id="loading-bar"></div>
+        <div class="card" style="width:100%;">
+            <ul class="editPorfile" style="list-style:none; text-align:left; margin-left:auto; width:58%;">
+                <li><b>Username:</b> {{ user.username }}</li>
+                <li><b>Coding Languages:</b> {{ user_info.coding_languages }}</li>
+                <li><b>Career Interest:</b> {{ user_info.tech_career_interest }}</li>
+                <li><b><a href="{% url 'edit_profile' %}" class="btn">Edit</a></b></li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% include "footer.html" %}

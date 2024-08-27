@@ -1,0 +1,108 @@
+{% include "header.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/tilesSection.css' %}">
+
+
+    <div class="container" id="content" >
+        <h2 style="text-align: center;">Get Hired!</h2>
+        
+        <div class="pageHeaderSection" style="max-width: 75%;">
+            
+            <hr>    
+            <img class="noDisplayInMobile" src="{% static 'imgs/vetapplyjob50x50.png' %}" alt="Apply for job" style=" max-width: 250px;float:right;border-radius: 10px;">
+                <!--
+                <ul style="font-size:16px; font-weight:bold; text-align:left;padding-bottom: 30px;">
+                <li>Start by creating a resume. You can use one of the free templates from below list.
+                    <ul>
+                        <li>Free templates from <a href="https://www.canva.com/resumes/templates/" target="_blank">Canva</a></li>
+                        <li>Free templates from <a href="https://create.microsoft.com/en-us/templates/resumes" target="_blank">Microsoft</a></li>
+                        <li>Free templates from <a href="https://resume.io/resume-templates" target="_blank">Reusme.io</a></li>
+                    </ul>
+                </li>
+                <li>Set up a LinkedIn profile with your achievements, certifications and prior work experience</li>
+                <li>Finally, apply to jobs using "Find a job" link below
+                    <ul>
+                        <li>Apply jobs at <a href="https://www.clearancejobs.com/registration?utm_source=google&utm_medium=cpc&utm_campaign=83735994&utm_content=3527686434&utm_term=clearance%20job&gad_source=1&gclid=Cj0KCQjwrKu2BhDkARIsAD7GBou5eTvQkDRrLtp7hggZF3naFFIa6Bm8QyBOUe-q0D07PA2_GsKp7EoaAkVCEALw_wcB" target="_blank">Clearance Jobs</a></li>                
+                        <li>Apply jobs at <a href="https://www.indeed.com/" target="_blank">Indeed.com</a></li>                
+                        <li>Apply jobs at <a href="https://www.dice.com/" target="_blank">Dice.com</a></li>                
+                        <li>Apply jobs at <a href="https://www.linkedin.com/jobs/" target="_blank">Linkedin.com</a></li>  
+                    </ul>
+                </li>
+                <li>Once you get hired, your are welcome to volunteer at "Veterans for IT" to help fellow veterans
+                    <ul>
+                        <li>Click <a href="{% url 'signup' %}" target="_blank">here</a> to register as volunteer at "Veterans for IT"</li>
+                    </ul>
+                </li>
+            </ul>
+            -->
+            <div>At Veteran IT Guide, we are dedicated to helping veterans transition into fulfilling careers in the tech industry. Our "Find a Tech Job" page is designed to be your go-to resource for discovering opportunities, preparing for the job market, and landing a role that suits your skills and aspirations.</div>
+            <ul>
+                <li>
+                    <strong>Resume and Interview Support :</strong>To help you stand out in a competitive job market, we offer personalized resume-building tools and interview preparation resources. Our experts can guide you in crafting a resume that highlights your military experience and translates it into valuable IT skills. Additionally, we provide tips and mock interviews to help you confidently present yourself to potential employers.
+                </li>
+
+                <li>
+                    <strong>Job Search Resources: </strong>We provide access to a curated list of job boards, recruitment agencies, and company career pages that actively seek veteran talent. Our platform simplifies the job search process by bringing together opportunities from across the tech industry, including roles in software development, cybersecurity, data analysis, IT support, and more.
+                </li>
+                
+                <!--
+                <li>
+                    <strong>Networking Opportunities</strong>
+                    <ul>
+                        <li>Networking is key to finding the right job, and we are here to connect you with professionals in the tech industry who can offer advice, mentorship, and job leads. Through our community events, webinars, and online forums, you’ll have the chance to meet industry insiders and fellow veterans who have successfully transitioned into tech roles.</li>
+                    </ul>
+                </li>
+                -->
+                
+                <!--
+                <li>
+                    <strong>Certification and Training</strong>
+                    <ul>
+                        <li>If you're looking to boost your qualifications, our site also features information on certification programs and training courses that can give you an edge in the job market. From CompTIA to AWS certifications, we guide you through the process of acquiring the credentials that employers value most.</li>
+                    </ul>
+                </li>
+                -->
+                
+                <li>
+                    <strong>Veteran-Friendly Employers: </strong>We collaborate with companies that recognize the unique strengths veterans bring to the table. On this page, you’ll find a list of veteran-friendly employers who are committed to hiring and supporting veterans in their tech careers. These companies offer not just jobs, but career paths with growth potential and supportive work environments.
+                </li>
+                
+                <li>
+                    <strong>Success Stories: </strong>Be inspired by veterans who have successfully transitioned into IT jobs. Our success stories showcase real-life examples of individuals who have navigated the same journey you're embarking on, proving that with the right guidance and determination, you too can achieve your career goals. Whether you’re just starting your job search or you’re ready to apply, [Your Organization's Name] is here to support you every step of the way. Let us help you find the tech job that’s right for you, and begin your new career with confidence and purpose. 
+                </li>
+                
+                
+            </ul>
+
+            <hr>
+
+            <div class="button-grid employmentGrid" style="max-width: 100% !important;">
+                <a href="{% url 'resume' %}" class="grid-button">
+                    <img src="https://res.cloudinary.com/cybercoders/image/upload/c_scale,g_south_east,l_cc_logo_bug_wenazs.png,w_40/v1613067254/Tailor_Resume_to_Job_Description_Blog_Photo_pq7rge.jpg" alt="Create a resume" style="border-radius: 10px; width: 100%; max-width: 500px; height: auto;">
+                    <h3>Resume and Interview Support</h3>
+                    <hr>
+                    <h5>Learn how to make a resume</h5>
+                </a>
+                <a href="{% url 'linkedin' %}" class="grid-button">
+                    <img src="https://download.logo.wine/logo/LinkedIn/LinkedIn-Logo.wine.png" alt="LinkedIn page" style="border-radius: 10px; width: 100%; max-width: 500px; height: auto;">
+                    <h3>How to Make a LinkedIn Page</h3>
+                    <hr>
+                    <h5>Learn how to create a LinkedIn profile</h5>
+                </a>
+                <a href="{% url 'jobfind' %}" class="grid-button">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2936/2936630.png" alt="Find a job" style="border-radius: 10px; width: 100%; max-width: 300px; height: auto;">
+                    <h3>Find a Job</h3>
+                    <hr>
+                    <h5>Find job opportunities with Veteran-Friendly Employers</h5>
+                </a>
+            </div>
+        </div>  
+
+        
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+{% include "footer.html" %}

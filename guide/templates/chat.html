@@ -1,0 +1,133 @@
+{% include "header.html" %}
+{% load static %} 
+
+
+<style>
+   
+
+    /* User info styles */
+    .user-info {
+        font-size: 1rem;
+        margin-left: auto;
+    }
+
+    .user-info a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .user-info a:hover {
+        text-decoration: underline;
+    }
+
+    
+
+    /* Card styles */
+    .card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.8);
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        margin-top: 20px;
+        border: 3px solid #931a1a;
+    }
+
+    /* Form styles */
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 16px;
+        resize: vertical;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    
+
+    
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+<div class="container" id="content">
+    <div class="card">
+        <h1>Chat with Sam</h1>
+        <form id="chat-form" method="post">
+            {% csrf_token %}
+            <label for="user_input">Your Message:</label>
+            <textarea autofocus id="user_input" name="user_input" rows="4">{{ user_input }}</textarea>
+            <button type="submit">Send</button>
+        </form>
+        {% if response_text %}
+        <h2>Sam's Response:</h2>
+        <p>{{ response_text|safe }}</p>
+        {% endif %}
+        {% if error_message %}
+        <h2>Error:</```html
+        <p class="error">{{ error_message }}</p>
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+</div>
+
+<script>
+    document.getElementById('chat-form').addEventListener('submit', function () {
+        document.getElementById('loadingOverlay').style.visibility = 'visible';
+    });
+
+    function hideLoader() {
+        document.getElementById('loadingOverlay').style.visibility = 'hidden';
+    }
+
+    setTimeout(hideLoader, 2000); // Simulate response time, replace with real logic
+</script>
+
+
+{% include "footer.html" %}
+

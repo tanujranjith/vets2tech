@@ -1,0 +1,25 @@
+{% include "header.html" %}
+<div class="container" id="content" style="text-align: center;">
+    <section>
+        
+
+            <h2>Edit Profile</h2>
+        
+            <form method="post" novalidate>
+                <div class="content" id="content" style="text-align: center;">
+                    <div style="text-align: left;max-width: 300px; margin-left: auto; margin-right: auto;">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    
+                        <button type="submit" class="loginButton" style="max-width: 190px;">Save changes</button>
+                    </div>
+                </div>
+            </form>
+            
+            <br>
+            
+            <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+        
+    </section>
+</div>
+{% include "footer.html" %}

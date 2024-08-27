@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F7FA; /* Light Gray */
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Header Styles */
+        header {
+            background-image: url("{% static 'imgs/bannerfinal1.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border-bottom: 5px solid #931a1a; /* Red bottom border for a patriotic touch */
+
+            
+            
+            height: 120px;
+            
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .profile-container {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-container img {
+            cursor: pointer;
+        }
+
+        .profile-container a,
+        .profile-container button {
+            color: #ffffff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 1rem;
+            font-size: 1rem;
+        }
+
+        .profile-container a{
+            color:#ffffff;
+            font-weight: bold;
+            font-size: 19px !important;
+        }
+
+        .profile-container a:hover,
+        .profile-container button:hover {
+            text-decoration: underline;
+        }
+
+        .nav-btn {
+            background-color: #007BFF;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            z-index: 1000;
+            border-radius: 0 16px 16px 0;
+            padding: 1rem;
+            border-left: 5px solid #931a1a; /* Red border */
+        }
+        .sidebar.show {
+            left: 0;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a, .sidebar ul li button {
+            color: #002048;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: transparent;
+            border: 1px solid transparent;
+        }
+        .sidebar ul li a:hover, .sidebar ul li button:hover {
+            background-color: rgba(0, 123, 255, 0.2);
+            color: #0056b3;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+        .sidebar-hover-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            z-index: 1001;
+        }
+        .content {
+            margin-left: 0;
+            padding: 2rem;
+            flex: 1;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 0 16px 16px 0;
+        }
+        .content.sidebar-open {
+            margin-left: 300px;
+        }
+
+        .container{
+            padding:10px 90px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 1.5rem; /* Reduced spacing between cards */
+            border-radius: 12px; /* Rounded corners */
+            background-color: #ffffff; /* White background for sections */
+            padding: 2rem; /* Padding for content */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced floating effect */
+            border: 1px solid #ddd; /* Light border for more definition */
+            position: relative; /* Ensure proper positioning for floating effect */
+        }
+
+        .section2 {
+            margin-bottom: 1.5rem; /* Reduced spacing between cards */
+            border-radius: 12px; /* Rounded corners */
+            background-color: #ffffff; /* White background for sections */
+            padding: 2rem; /* Padding for content */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced floating effect */
+            border: 1px solid #ddd; /* Light border for more definition */
+             /* Default text alignment */
+            display: flex;
+            flex-direction: column;
+            min-height: 360px;
+            
+        }
+        
+        /* Adjust the size of each card */
+        .section-card {
+            flex: 1;
+            min-width: 0; /* Ensure cards fit within container */
+            vertical-align: top;
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            padding-left: 1.5rem;
+        }
+
+        .section p a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section p a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #007BFF; /* Gradient from Blue to Dark Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 16px 16px 0 0; /* Rounded top corners */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-button {
+            color: #007BFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .modal-button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Veteran IT Guide</h1>
+        <button class="nav-btn" id="navBtn">&#9776;</button> <!-- Hamburger icon -->
+        <div class="profile-container">
+            {% if user.is_authenticated %}
+                <img src="{% static 'imgs/user icon.png' %}" height="43px" width="43px" id="profilePic" style="float:right;">
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </header>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education/">Education</a></li>
+            <li><a href="/employment/">Employment</a></li>
+            <li><a href="/chat/">Chat with Sam</a></li>
+            <li><a href="/about/" class="footerLink">Our vision and mission</a></li>
+            <li><a href="/Volunteer/">Volunteer</a></li>
+
+            <!--{% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; color: #007BFF; cursor: pointer; padding: 10px;">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+            -->
+        </ul>
+    </div>
+    <div class="sidebar-hover-zone" id="sidebarHoverZone"></div>
+
+    <footer>
+        <p>&copy; 2024 Veteran IT Guide. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Account Options</h2>
+            <form action="{% url 'profile' %}" method="get">
+                <button type="submit" class="linkButton" style="margin:10px 0px;">Go to Profile</button>
+            </form>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="linkButton" style="margin:10px 0px;" >Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("profileModal");
+        var btn = document.getElementById("profilePic");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.getElementById('navBtn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
